@@ -5,11 +5,6 @@ const arrayUniquePlugin = require('mongoose-unique-array');
     const ChatSchema = new mongoose.Schema({
 
         //newMessage implies a new room must be created, will create a new ChatRoomModel, store members, created, and all messages.
-        _id:{
-            type: mongoose.Schema.Types.ObjectId,
-            required: true,
-            unique: true
-        },
         created: {
             type: Number,
             required: true
@@ -50,12 +45,6 @@ class Message {
 }
 
 const Messages = mongoose.model('Messages', {
-    _id:{
-        type: mongoose.Schema.Types.ObjectId,
-        unique: true,
-        required: true
-    },
-
     messages:
         [
             {
