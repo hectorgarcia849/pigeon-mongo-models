@@ -1,5 +1,5 @@
 {
-  "name": "pigeon-mongo-models",
+  "name": "@softwaresamurai/pigeon-mongo-models",
   "version": "1.0.0",
   "description": "Mongoose models for pigeon application",
   "main": "index.js",
