@@ -18,8 +18,7 @@ const arrayUniquePlugin = require('mongoose-unique-array');
         messages: {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'Messages',
-            unique: true,
-            required: true
+            unique: true
         }
     });
 
