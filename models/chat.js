@@ -44,26 +44,27 @@ class Message {
 }
 
 const Messages = mongoose.model('Messages', {
-    messages:
-        [
-            {
-                from: {
-                    type: mongoose.Schema.Types.ObjectId,
-                    ref: 'User'
-                },
-                to: {
-                    type: mongoose.Schema.Types.ObjectId,
-                    ref: 'User'
-                },
-                message: {
-                    type: String
-                },
-                timestamp: {
-                    type: Number
-                }
-            }
-        ]
-
+    messages: {
+            type:
+                [
+                    {
+                        from: {
+                            type: mongoose.Schema.Types.ObjectId,
+                            ref: 'User'
+                        },
+                        to: {
+                            type: mongoose.Schema.Types.ObjectId,
+                            ref: 'User'
+                        },
+                        message: {
+                            type: String
+                        },
+                        timestamp: {
+                            type: Number
+                        }
+                    }
+                ]
+    }
 });
 
 const Chat = mongoose.model('Chat', ChatSchema);
