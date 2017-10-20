@@ -23,6 +23,9 @@ const ChatSchema = new mongoose.Schema({
 ChatSchema.plugin(arrayUniquePlugin);
 
 const ChatsSchema = new mongoose.Schema({
+    owner: {
+        type: {type: mongoose.Schema.Types.ObjectId, ref: 'User', unique: true}
+    },
     chats: {
         type: [{type: mongoose.Schema.Types.ObjectId, ref: 'Chat', unique: true}]
     }
