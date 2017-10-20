@@ -22,7 +22,7 @@ const ChatSchema = new mongoose.Schema({
 
 ChatSchema.plugin(arrayUniquePlugin);
 
-const ChatsSchema = new mongoose.Schema({
+const ChatProfileSchema = new mongoose.Schema({
     owner: {
         type: {type: mongoose.Schema.Types.ObjectId, ref: 'User', unique: true}
     },
@@ -62,7 +62,7 @@ const MessagesSchema = mongoose.Schema({
 });
 
 const Chat = mongoose.model('Chat', ChatSchema);
-const Chats = mongoose.model('Chats', ChatsSchema);
+const ChatProfile = mongoose.model('Chats', ChatProfileSchema);
 const Messages = mongoose.model('Messages', MessagesSchema);
 
-module.exports = {Chat, Chats, Messages, Message};
+module.exports = {Chat, ChatProfile, Messages, Message};
