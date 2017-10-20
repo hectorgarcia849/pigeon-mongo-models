@@ -41,7 +41,7 @@ class Message {
     }
 }
 
-const MessagesSchema = mongoose.Schema('Messages', {
+const MessagesSchema = mongoose.Schema({
     messages:
             [
                 {
