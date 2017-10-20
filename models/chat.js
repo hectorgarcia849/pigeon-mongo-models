@@ -2,34 +2,32 @@ const mongoose = require('mongoose');
 const {ObjectID} = require('mongodb');
 const arrayUniquePlugin = require('mongoose-unique-array');
 
-    const ChatSchema = new mongoose.Schema({
-        created: {
-            type: Number,
-            required: true
-        },
-        members: {
-            type: [{type: mongoose.Schema.Types.ObjectId, ref:'User', unique:true}],
-            unique: true,
-            required: true
+const ChatSchema = new mongoose.Schema({
+    created: {
+        type: Number,
+        required: true
+    },
+    members: {
+        type: [{type: mongoose.Schema.Types.ObjectId, ref:'User', unique: true}],
+        unique: true,
+        required: true
 
-        },
-        messages: {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'Messages',
-            unique: true
-        }
-    });
+    },
+    messages: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Messages',
+        unique: true
+    }
+});
 
 ChatSchema.plugin(arrayUniquePlugin);
 
-//validate and save, called in that order and first on children then on the parent
-// ChatSchema.pre('validate', function(next){
-//     next();
-// });
-//
-// ChatSchema.pre('save', function(next) {
-//     next();
-// });
+const ChatsSchema = new mongoose.Schema({
+    chats: {
+        type: [{type: mongoose.Schema.Types.ObjectId, ref: 'Chat', unique: true}]
+    }
+});
+
 
 class Message {
 
@@ -61,6 +59,7 @@ const MessagesSchema = mongoose.Schema({
 });
 
 const Chat = mongoose.model('Chat', ChatSchema);
+const Chats = mongoose.model('Chats', ChatsSchema);
 const Messages = mongoose.model('Messages', MessagesSchema);
 
-module.exports = {Chat, Messages, Message};
+module.exports = {Chat, Chats, Messages, Message};
