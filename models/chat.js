@@ -62,7 +62,7 @@ const MessagesSchema = mongoose.Schema({
 });
 
 const Chat = mongoose.model('Chat', ChatSchema);
-const ChatProfile = mongoose.model('Chats', ChatProfileSchema);
+const ChatProfile = mongoose.model('ChatProfile', ChatProfileSchema);
 const Messages = mongoose.model('Messages', MessagesSchema);
 
 module.exports = {Chat, ChatProfile, Messages, Message};
