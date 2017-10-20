@@ -42,27 +42,22 @@ class Message {
 }
 
 const MessagesSchema = mongoose.Schema('Messages', {
-    messages: {
-            type:
-                [
-                    {
-                        from: {
-                            type: mongoose.Schema.Types.ObjectId,
-                            ref: 'User'
-                        },
-                        to: {
-                            type: mongoose.Schema.Types.ObjectId,
-                            ref: 'User'
-                        },
-                        message: {
-                            type: String
-                        },
-                        timestamp: {
-                            type: Number
-                        }
-                    }
-                ]
-    }
+    messages:
+            [
+                {
+                    from: {
+                        type: mongoose.Schema.Types.ObjectId,
+                        ref: 'User'
+                    },
+                    to: {
+                        type: mongoose.Schema.Types.ObjectId,
+                        ref: 'User'
+                    },
+                    message: String,
+                    timestamp: Number
+                }
+            ]
+
 });
 
 const Chat = mongoose.model('Chat', ChatSchema);
