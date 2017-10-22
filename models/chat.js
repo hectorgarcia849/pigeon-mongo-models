@@ -13,7 +13,7 @@ const ChatSchema = new mongoose.Schema({
         required: true
     },
     members: {
-        type: [{type: mongoose.Schema.Types.ObjectId, unique: true}],
+        type: [{type: mongoose.Schema.Types.ObjectId, ref: 'User', unique: true}],
         unique: true,
         required: true
 
@@ -29,10 +29,12 @@ ChatSchema.plugin(arrayUniquePlugin);
 
 const ChatProfileSchema = new mongoose.Schema({
     _owner: {
-        type: {type: mongoose.Schema.Types.ObjectId, unique: true}
+        type: {type: mongoose.Schema.Types.ObjectId, ref: 'User', unique: true},
+        required: true
     },
     chats: {
-        type: [{type: mongoose.Schema.Types.ObjectId, unique: true}]
+        type: [{type: mongoose.Schema.Types.ObjectId, ref: 'Chat', unique: true}],
+        require: true
     }
 });
 
@@ -52,10 +54,12 @@ const MessagesSchema = mongoose.Schema({
             [
                 {
                     from: {
-                        type: mongoose.Schema.Types.ObjectId
+                        type: mongoose.Schema.Types.ObjectId,
+                        ref: 'User'
                     },
                     to: {
                         type: mongoose.Schema.Types.ObjectId,
+                        ref: 'User'
                     },
                     message: String,
                     timestamp: Number
