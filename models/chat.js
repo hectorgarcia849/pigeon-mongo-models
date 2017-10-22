@@ -2,13 +2,18 @@ const mongoose = require('mongoose');
 const {ObjectID} = require('mongodb');
 const arrayUniquePlugin = require('mongoose-unique-array');
 
+/*
+References removed for time being as references cannot be using different instances of mongoose.
+https://github.com/Automattic/mongoose/issues/2951
+ */
+
 const ChatSchema = new mongoose.Schema({
     created: {
         type: Number,
         required: true
     },
     members: {
-        type: [{type: mongoose.Schema.Types.ObjectId, ref:'User', unique: true}],
+        type: [{type: mongoose.Schema.Types.ObjectId, unique: true}],
         unique: true,
         required: true
 
@@ -23,11 +28,11 @@ const ChatSchema = new mongoose.Schema({
 ChatSchema.plugin(arrayUniquePlugin);
 
 const ChatProfileSchema = new mongoose.Schema({
-    owner: {
-        type: {type: mongoose.Schema.Types.ObjectId, ref: 'User', unique: true}
+    _owner: {
+        type: {type: mongoose.Schema.Types.ObjectId, unique: true}
     },
     chats: {
-        type: [{type: mongoose.Schema.Types.ObjectId, ref: 'Chat', unique: true}]
+        type: [{type: mongoose.Schema.Types.ObjectId, unique: true}]
     }
 });
 
@@ -47,12 +52,10 @@ const MessagesSchema = mongoose.Schema({
             [
                 {
                     from: {
-                        type: mongoose.Schema.Types.ObjectId,
-                        ref: 'User'
+                        type: mongoose.Schema.Types.ObjectId
                     },
                     to: {
                         type: mongoose.Schema.Types.ObjectId,
-                        ref: 'User'
                     },
                     message: String,
                     timestamp: Number
