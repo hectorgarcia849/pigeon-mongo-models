@@ -180,8 +180,8 @@ const ChatProfileSchema = new mongoose.Schema({
         required: true
     },
     chats: {
-        type: [{type: mongoose.Schema.Types.ObjectId, ref: 'Chat', unique: true}],
-        require: true
+        type: [{type: mongoose.Schema.Types.ObjectId, ref: 'Chat'}],
+        required: true
     }
 });
 
