@@ -1,6 +1,3 @@
-const {User} = require('./models/user');
-const {Pigeon} = require('./models/pigeon');
-const {Profile} = require('./models/profile');
-const {Chat, Messages, Message, ChatProfile} = require('./models/chat');
+const {Chat, Messages, Message, ChatProfile, Pigeon, Profile, User} = require('./models/models');
 
 module.exports = {User, Pigeon, Profile, Chat, ChatProfile, Messages, Message};
