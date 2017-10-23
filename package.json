@@ -1,6 +1,6 @@
 {
   "name": "@softwaresamurai/pigeon-mongo-models",
-  "version": "1.0.13",
+  "version": "1.0.14",
   "description": "Mongoose models for pigeon application",
   "main": "index.js",
   "scripts": {

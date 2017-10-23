@@ -176,7 +176,7 @@ ChatSchema.plugin(arrayUniquePlugin);
 
 const ChatProfileSchema = new mongoose.Schema({
     _owner: {
-        type: {type: mongoose.Schema.Types.ObjectId, ref: 'User', unique: true},
+        type: mongoose.Schema.Types.ObjectId, ref: 'User', unique: true,
         required: true
     },
     chats: {
