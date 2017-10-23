@@ -215,8 +215,8 @@ const MessagesSchema = mongoose.Schema({
 
 });
 
-const Chat = mongoose.model('Chat', ChatSchema);
-const ChatProfile = mongoose.model('ChatProfile', ChatProfileSchema);
-const Messages = mongoose.model('Messages', MessagesSchema);
+const Chat = mongoose.model('Chat', ChatSchema, 'chats');
+const ChatProfile = mongoose.model('ChatProfile', ChatProfileSchema, 'chatprofile');
+const Messages = mongoose.model('Messages', MessagesSchema, 'messages');
 
 module.exports = {User, Pigeon, Profile, Chat, ChatProfile, Messages, Message};
