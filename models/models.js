@@ -56,7 +56,7 @@ UserSchema.statics.findByCredentials = function(email, password) {
             });
         });
     });
-}
+};
 
 UserSchema.pre('save', function(next) {
     const user = this;
@@ -160,7 +160,7 @@ const ChatSchema = new mongoose.Schema({
         required: true
     },
     members: {
-        type: [{type: mongoose.Schema.Types.ObjectId, ref: 'User', unique: true}],
+        type: [{type: mongoose.Schema.Types.ObjectId, ref: 'User'}],
         unique: true,
         required: true
 
@@ -212,7 +212,6 @@ const MessagesSchema = mongoose.Schema({
                 timestamp: Number
             }
         ]
-
 });
 
 const Chat = mongoose.model('Chat', ChatSchema, 'chats');
